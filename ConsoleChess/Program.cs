@@ -3,27 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Text.RegularExpressions;
 namespace ConsoleChess
 {
     class Program
     {
+        char[] validColInputs = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
+        char[] validRowInputs = new char[] { '1', '2', '3', '4', '5', '6', '7', '8' };
+
         static void Main(string[] args)
         {
             Program p = new Program();
 
             string[] board = p.SetBoard();
-            p.PrintBoard(ref board);
-            Console.ReadLine();
-
+            while (true)
+            {
+                p.PrintBoard(ref board);
+                Console.ReadLine();
+            }
         }
 
-        string[] Player1Move(ref string[] board)
+        string[] Player1Move(ref string[] board, ref char[] validColInputs, ref char[]validRowInputs)
         {
+            
             string userInput1;
             string userInput2;
-            Console.WriteLine("Please give me Row then Colum of the Token you would like to move");
+            char[] validUserInput1;
+            do
+            {
+                Console.WriteLine("Please give me Row then Colum of the Token you would like to move");
+                //if(Player1 owns Row && player1 owns col)
+                // Make into char and compare to char array?
+                userInput1 = Console.ReadLine().ToLower();
 
+
+            } while (true);
             return board;
         }
 
