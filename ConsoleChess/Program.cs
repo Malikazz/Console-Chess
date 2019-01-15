@@ -8,36 +8,44 @@ namespace ConsoleChess
 {
     class Program
     {
-        char[] validColInputs = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
-        char[] validRowInputs = new char[] { '1', '2', '3', '4', '5', '6', '7', '8' };
+        string[] validColInputs = new string[] {"a", "b", "c", "d", "e", "f", "g", "h"};
+        string[] validRowInputs = new string[] {"1", "2", "3", "4", "5", "6", "7","8"};
 
         static void Main(string[] args)
         {
             Program p = new Program();
 
             string[] board = p.SetBoard();
-            while (true)
-            {
-                p.PrintBoard(ref board);
-                Console.ReadLine();
-            }
+            p.PrintBoard(ref board);
+            p.Player1Move(ref board, p.validColInputs, p.validRowInputs);
+            Console.ReadLine();
+            
         }
 
-        string[] Player1Move(ref string[] board, ref char[] validColInputs, ref char[]validRowInputs)
+        string[] Player1Move(ref string[] board, string[] validColInputs, string[] validRowInputs)
         {
-            
-            string userInput1;
-            string userInput2;
-            char[] validUserInput1;
-            do
+            string userInput;
+            Console.Write("COL then ROW to select: ");
+            userInput = Console.ReadLine().ToLower();
+            if (userInput.Length > 2)
+            { 
+                userInput = userInput.Remove(2);
+                Console.WriteLine(userInput);
+            }
+            for (int i = 0; i < validColInputs.Length; i++)
             {
-                Console.WriteLine("Please give me Row then Colum of the Token you would like to move");
-                //if(Player1 owns Row && player1 owns col)
-                // Make into char and compare to char array?
-                userInput1 = Console.ReadLine().ToLower();
-
-
-            } while (true);
+                if (userInput.Contains(validColInputs[i]))
+                {
+                    Console.WriteLine("{0}",userInput[0]);
+                }
+            }
+            for (int i = 0; i < validRowInputs.Length; i++)
+            {
+                if (userInput.Contains(validColInputs[i]))
+                {
+                    Console.WriteLine("{0}", userInput[1]);
+                }
+            }
             return board;
         }
 
